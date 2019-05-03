@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import wc2019.models.Player;
 import wc2019.services.PlayerService;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -27,5 +28,10 @@ public class PlayerController {
     @GetMapping(value = "/player")
     public List<Player> getAll() {
         return this.playerService.getAll();
+    }
+
+    @GetMapping(value = "/player/{id}")
+    public Player findById(@PathVariable("id") Integer id) {
+        return this.playerService.findById(id);
     }
 }

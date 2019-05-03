@@ -24,4 +24,8 @@ public class PlayerService {
     public List<Player> getAll() {
         return this.playerRepository.findAll();
     }
+
+    public Player findById(Integer id) {
+        return this.playerRepository.findById(id).get();
+    }
 }
