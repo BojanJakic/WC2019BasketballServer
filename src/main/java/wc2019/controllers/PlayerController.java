@@ -34,4 +34,9 @@ public class PlayerController {
     public Player findById(@PathVariable("id") Integer id) {
         return this.playerService.findById(id);
     }
+
+    @DeleteMapping(value = "/player/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        this.playerService.delete(id);
+    }
 }

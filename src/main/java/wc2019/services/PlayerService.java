@@ -28,4 +28,8 @@ public class PlayerService {
     public Player findById(Integer id) {
         return this.playerRepository.findById(id).get();
     }
+
+    public void delete(Integer id) {
+        this.playerRepository.deleteById(id);
+    }
 }
