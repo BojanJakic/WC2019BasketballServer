@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import wc2019.models.TeamGroup;
 import wc2019.repositories.TeamGroupRepository;
 
+import java.util.List;
+
 @Service
 public class TeamGroupService {
 
@@ -17,5 +19,9 @@ public class TeamGroupService {
 
     public TeamGroup save(TeamGroup teamGroup) {
         return teamGroupRepository.save(teamGroup);
+    }
+
+    public List<TeamGroup> getAll() {
+        return teamGroupRepository.findAll();
     }
 }
