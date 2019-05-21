@@ -6,6 +6,7 @@ import wc2019.models.TeamGroup;
 import wc2019.models.enums.GroupName;
 import wc2019.services.TeamGroupService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class TeamGroupController {
     }
 
     @PostMapping("/team-group")
-    public TeamGroup save(@RequestBody TeamGroup teamGroup) {
+    public TeamGroup save(@RequestBody @Valid TeamGroup teamGroup) {
         return teamGroupService.save(teamGroup);
     }
 

@@ -1,6 +1,11 @@
 package wc2019.models;
 
+import wc2019.validation.annotation.UniqueEmail;
+import wc2019.validation.annotation.UniqueUsername;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
@@ -8,10 +13,23 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotBlank(message = "First name is mandatory")
     private String firstName;
+
+    @NotBlank(message = "Last name is mandatory")
     private String lastName;
+
+    @NotBlank(message = "Username is mandatory")
+    @UniqueUsername
     private String username;
+
+    @NotBlank(message = "Password is mandatory")
     private String password;
+
+    @NotBlank(message = "Email is mandatory")
+    @UniqueEmail
+    //@Email(regexp = "")
     private String email;
 
     public Integer getId() {

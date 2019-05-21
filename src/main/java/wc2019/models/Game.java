@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -14,12 +16,24 @@ public class Game {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotBlank(message = "Team name is mandatory")
     private String teamOne;
+
+    @NotBlank(message="Team name is mandatory")
     private String teamTwo;
+
+    @NotNull(message = "Number of points is mandatory")
     private Integer teamOnePoints;
+
+    @NotNull(message = "Number of points is mandatory")
     private Integer teamTwoPoints;
+
+    @NotNull(message = "Games date is mandatory")
     private Date gameDate;
+
     @Enumerated
+    @NotNull(message = "Round is mandatory")
     private Round round;
 
     public Integer getId() {

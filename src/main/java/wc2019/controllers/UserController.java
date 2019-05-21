@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import wc2019.models.User;
 import wc2019.services.UserService;
 
+import javax.validation.Valid;
+
 @RestController
 @CrossOrigin()
 public class UserController {
@@ -17,7 +19,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/user")
-    public User save(@RequestBody User user) {
+    public User save(@RequestBody @Valid User user) {
         return userService.save(user);
     }
 

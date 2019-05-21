@@ -3,6 +3,7 @@ package wc2019.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -11,11 +12,18 @@ public class RealTeam {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotBlank(message = "Name is mandatory")
     private String name;
+
     private int wonGames;
+
     private int lostGame;
+
     private int scoredPoints;
+
     private int opponentsPoints;
+
     @ManyToMany(mappedBy = "teams")
     @JsonIgnore
     List<TeamGroup> groupNames;

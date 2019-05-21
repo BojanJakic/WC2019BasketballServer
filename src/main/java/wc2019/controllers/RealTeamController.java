@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import wc2019.models.RealTeam;
 import wc2019.services.RealTeamService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class RealTeamController {
     }
 
     @PostMapping(value = "/real-team")
-    public RealTeam save(@RequestBody RealTeam realTeam) {
+    public RealTeam save(@RequestBody @Valid RealTeam realTeam) {
         return this.realTeamService.save(realTeam);
     }
 

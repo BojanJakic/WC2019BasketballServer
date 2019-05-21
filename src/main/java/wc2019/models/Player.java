@@ -3,6 +3,8 @@ package wc2019.models;
 import wc2019.models.enums.PlayerPosition;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.List;
 
@@ -12,18 +14,34 @@ public class Player {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotBlank(message="First is mandatory")
     private String firstName;
+
+    @NotBlank(message = "Last name is mandatory")
     private String lastName;
+
+    @NotNull(message = "Height is mandatory")
     private String height;
+
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Position is mandatory")
     private PlayerPosition position;
+
+    @NotNull(message = "Birthday is mandatory")
     private Date dateOfBirth;
+
+    @NotNull(message = "Fantasy value is mandatory")
     private Double fantasyValue;
+
     @Transient
     private String profilePicture;
+
     @ManyToOne
     @JoinColumn(name="real_team_id")
+    @NotNull(message = "Team is mandatory")
     private RealTeam realTeam;
+
     @ManyToMany
             @JoinTable(
                     name="player_fantasy_team",

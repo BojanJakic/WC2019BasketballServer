@@ -3,6 +3,8 @@ package wc2019.models;
 import wc2019.models.enums.Round;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -10,20 +12,44 @@ public class PlayerStatistics {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotNull(message = "Number of points is mandatory")
     private Integer points;
+
+    @NotBlank(message="One point hots are mandatory")
     private String onePoint;
+
+    @NotBlank(message="Two point hots are mandatory")
     private String twoPoints;
+
+    @NotBlank(message="Three point hots are mandatory")
     private String threePoints;
+
+    @NotNull(message = "Number of offensive rebounds is mandatory")
     private Integer offensiveRebounds;
+
+    @NotNull(message = "Number of defensive rebounds is mandatory")
     private Integer defensiveRebounds;
+
+    @NotNull(message = "Number of assists rebounds is mandatory")
     private Integer assists;
+
+    @NotNull(message = "Number of turnovers rebounds is mandatory")
     private Integer turnover;
+
+    @NotNull(message = "Number of steals rebounds is mandatory")
     private Integer steals;
+
+    @NotNull(message = "Number of indexpoints is mandatory")
     private Integer indexRating;
+
     @ManyToOne
     @JoinColumn(name="player_id")
+    @NotNull(message = "Player is mandatory")
     Player player;
+
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Round is mandatory")
     private Round round;
 
 

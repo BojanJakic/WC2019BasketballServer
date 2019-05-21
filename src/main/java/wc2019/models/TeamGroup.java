@@ -1,6 +1,8 @@
 package wc2019.models;
 
 import wc2019.models.enums.GroupName;
+import wc2019.validation.annotation.TeamsGroupSize;
+import wc2019.validation.annotation.UniqueGroupName;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,8 +13,12 @@ public class TeamGroup {
     @Id
     @GeneratedValue
     private Integer id;
+
     @Enumerated(EnumType.STRING)
+    @UniqueGroupName
     private GroupName groupName;
+
+    @TeamsGroupSize
     @ManyToMany
     @JoinTable(
             name = "team_group_team",
